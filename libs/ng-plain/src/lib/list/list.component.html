@@ -1,32 +1,37 @@
 <!-- Header -->
-<ng-container *ngIf="headerTemplate">
-  <ng-container *ngTemplateOutlet="headerTemplate || defaultHeader"></ng-container>
-
-</ng-container>
-
+<ng-container *ngTemplateOutlet="headerTemplate || defaultHeader"></ng-container>
 <ng-template #defaultHeader>
   <div *ngIf="header">{{ header }}</div>
 </ng-template>
 
-<!-- Items -->
-<ul>
-  <ng-container *ngFor="let item of items">
-    <ng-container *ngIf="itemTemplate; else defaultItem">
-      <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
-    </ng-container>
 
-    <ng-template #defaultItem>
-      <li>{{ item }}</li>
-    </ng-template>
+<!-- Items -->
+<ng-container *ngIf="design !== 'native-sorted'; else sortedList">
+  <ul [class.style-removed]="design === 'none'">
+    <ng-container *ngTemplateOutlet="itemsList"></ng-container>
+  </ul>
+</ng-container>
+<ng-template #sortedList>
+  <ol>
+    <ng-container *ngTemplateOutlet="itemsList"></ng-container>
+  </ol>
+</ng-template>
+
+<ng-template #itemsList>
+  <ng-container *ngFor="let item of items">
+    <li>
+      <ng-container *ngIf="itemTemplate; else defaultItem">
+        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
+      </ng-container>
+
+      <ng-template #defaultItem>{{ item }}</ng-template>
+    </li>
   </ng-container>
-</ul>
+</ng-template>
 
 
 <!-- Footer -->
-<ng-container *ngIf="footerTemplate">
-  <ng-container *ngTemplateOutlet="footerTemplate || defaultFooter"></ng-container>
-</ng-container>
-
+<ng-container *ngTemplateOutlet="footerTemplate || defaultFooter"></ng-container>
 <ng-template #defaultFooter>
   <div *ngIf="footer">{{ footer }}</div>
 </ng-template>

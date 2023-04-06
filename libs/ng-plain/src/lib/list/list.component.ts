@@ -19,6 +19,9 @@ export class ListComponent<T> implements OnInit {
   @Input() items: T[] = [];
   @Input() itemTemplate: TemplateRef<any>|null = null;
 
+  @Input() design: 'native-unsorted'|'native-sorted'|'none' = 'none';
+
+
   ngOnInit(): void {
     if(this.header && this.headerTemplate) {
       console.warn('headerTemplate will override header text')

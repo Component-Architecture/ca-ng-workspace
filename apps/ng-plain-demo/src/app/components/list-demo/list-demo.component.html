@@ -1,1 +1,30 @@
-<ca-ng-plain-list [items]="items"></ca-ng-plain-list>
+<div>
+  <h2>List</h2>
+  <ca-ng-plain-list [items]="items"></ca-ng-plain-list>
+</div>
+<div>
+  <h2>List with header & footer text</h2>
+  <ca-ng-plain-list header="I am a header" footer="I am a footer" [items]="items"></ca-ng-plain-list>
+</div>
+
+<div>
+  <h2>List with custom templates</h2>
+  <ca-ng-plain-list header="I am a header" footer="I am a footer" [items]="items"></ca-ng-plain-list>
+</div>
+<ca-ng-plain-list [items]="customItems" [headerTemplate]="header" [itemTemplate]="item" [footerTemplate]="footer"></ca-ng-plain-list>
+
+<ng-template #header>
+  <h3 style="display: inline-block; margin-right: 5px">Custom Header</h3>
+  <button>Action</button>
+</ng-template>
+
+<ng-template #item let-item>
+  <span>Name: {{ item.name }}</span>
+  <span style="margin: 0 5px">--></span>
+  <span>Value:{{ item.value }}</span>
+</ng-template>
+
+<ng-template #footer>
+  <h3 style="display: inline-block; margin-right: 5px">Custom Footer</h3>
+  <button>Action</button>
+</ng-template>
