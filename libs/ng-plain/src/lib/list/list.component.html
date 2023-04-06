@@ -1,0 +1,32 @@
+<!-- Header -->
+<ng-container *ngIf="headerTemplate">
+  <ng-container *ngTemplateOutlet="headerTemplate || defaultHeader"></ng-container>
+
+</ng-container>
+
+<ng-template #defaultHeader>
+  <div *ngIf="header">{{ header }}</div>
+</ng-template>
+
+<!-- Items -->
+<ul>
+  <ng-container *ngFor="let item of items">
+    <ng-container *ngIf="itemTemplate; else defaultItem">
+      <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
+    </ng-container>
+
+    <ng-template #defaultItem>
+      <li>{{ item }}</li>
+    </ng-template>
+  </ng-container>
+</ul>
+
+
+<!-- Footer -->
+<ng-container *ngIf="footerTemplate">
+  <ng-container *ngTemplateOutlet="footerTemplate || defaultFooter"></ng-container>
+</ng-container>
+
+<ng-template #defaultFooter>
+  <div *ngIf="footer">{{ footer }}</div>
+</ng-template>

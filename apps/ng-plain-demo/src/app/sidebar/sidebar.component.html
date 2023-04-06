@@ -1,0 +1,3 @@
+<mat-nav-list role="navigation">
+  <a mat-list-item *ngFor="let route of componentRoutes" [routerLink]="['components', route.path]" [activated]="router.url === '/components/' + route.path">{{ route.component?.name }}</a>
+</mat-nav-list>

@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ca/ng-plain": ["libs/ng-plain/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
